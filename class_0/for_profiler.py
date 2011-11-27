@@ -7,19 +7,19 @@ from timeit import Timer
 divisble_by_2 = lambda x: not x % 2
 iter_list = range(0, 1000)
 
-def for_traditional_with_lambda():
-    for i in run_range:
-        multiply_by_10(i)
+def filter_with_normal_for():
+    l = []
+    for x in iter_list:
+        if divisble_by_2(x):
+            l.append(x)
+    return l
 
-def for_listcomp_with_lambda():
-    [multiply_by_10(i) for i in run_range]
+def filter_with_list_comprehension():
+    return [x for x in iter_list if divisble_by_2(x)]
 
-def for_traditional():
-    for i in run_range:
-        10 * i
+def filter_with_filter_func():
+    return filter(divisble_by_2, iter_list)
 
-def for_listcomp():
-    [10 * i for i in run_range]
 
 def create_table_result(title, results):
     head = 'fn min mean max'.split(' ')
