@@ -5,8 +5,11 @@ import sys
 from timeit import Timer
 
 divisble_by_2 = lambda x: not x % 2
+pow_3 = lambda x: x ** 3
 iter_list = range(0, 1000)
 
+##########################################
+######## FILTER
 def filter_with_normal_for():
     l = []
     for x in iter_list:
@@ -20,6 +23,19 @@ def filter_with_list_comprehension():
 def filter_with_filter_func():
     return filter(divisble_by_2, iter_list)
 
+##########################################
+######## MAP
+def map_with_normal_for():
+    l = []
+    for x in iter_list:
+        l.append(pow_3(x))
+    return l
+
+def map_with_list_comprehension():
+    return [pow_3(x) for x in iter_list]
+
+def map_with_map_func():
+    return map(pow_3, iter_list)
 
 def create_table_result(title, results):
     calc = {
@@ -46,3 +62,11 @@ if __name__ == '__main__':
     profile('filter_with_normal_for()', 'from __main__ import filter_with_normal_for')
     profile('filter_with_list_comprehension()', 'from __main__ import filter_with_list_comprehension')
     profile('filter_with_filter_func()', 'from __main__ import filter_with_filter_func')
+
+    print "***** MAP PROFILING *****"
+    assert map_with_normal_for() == map_with_list_comprehension() == map_with_map_func()
+    head = 'fn min mean max'.split(' ')
+    print '{0:>30s} {1:<10s} {2:<10s} {3:<10s}'.format(*head)
+    profile('map_with_normal_for()', 'from __main__ import map_with_normal_for')
+    profile('map_with_list_comprehension()', 'from __main__ import map_with_list_comprehension')
+    profile('map_with_map_func()', 'from __main__ import map_with_map_func')
