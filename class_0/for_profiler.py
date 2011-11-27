@@ -39,7 +39,8 @@ def profile(stmt='pass', setup='pass'):
     create_table_result(stmt, r)
 
 if __name__ == '__main__':
-    # sys.stdout.write(u'Processando uma lista de 1000 elementos. Repetindo 10 vezes, 1000 execuções.\n')
-    fn_list = 'for_traditional for_traditional_with_lambda for_listcomp for_listcomp_with_lambda'.split(' ')
-    for fn in fn_list:
-        profile('{}()'.format(fn), 'from __main__ import {}'.format(fn))
+
+    print "***** FILTER PROFILING *****"
+    profile('filter_with_normal_for()', 'from __main__ import filter_with_normal_for')
+    profile('filter_with_list_comprehension()', 'from __main__ import filter_with_list_comprehension')
+    profile('filter_with_filter_func()', 'from __main__ import filter_with_filter_func')
