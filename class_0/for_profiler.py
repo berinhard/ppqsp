@@ -4,8 +4,8 @@ from __future__ import division
 import sys
 from timeit import Timer
 
-multiply_by_10 = lambda x: 10 * x
-run_range = range(0, 1000)
+divisble_by_2 = lambda x: not x % 2
+iter_list = range(0, 1000)
 
 def for_traditional_with_lambda():
     for i in run_range:
