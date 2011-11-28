@@ -62,7 +62,7 @@ def create_table_result(title, results):
         'mean': sum(results) / len(results),
         'max': max(results)
     }
-    print '\n{fn:>30s} {min:<10.8f} {mean:<10.8f} {max:<10.8f}\n'.format(**calc)
+    print '{fn:>30s} {min:<10.8f} {mean:<10.8f} {max:<10.8f}'.format(**calc)
 
 def profile(stmt='pass', setup='pass'):
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     profile('filter_with_list_comprehension()', 'from __main__ import filter_with_list_comprehension')
     profile('filter_with_filter_func()', 'from __main__ import filter_with_filter_func')
 
-    print "***** MAP PROFILING *****"
+    print "\n***** MAP PROFILING *****"
     assert map_with_normal_for() == map_with_list_comprehension() == map_with_map_func()
     head = 'fn min mean max'.split(' ')
     print '{0:>30s} {1:<10s} {2:<10s} {3:<10s}'.format(*head)
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     profile('map_with_list_comprehension()', 'from __main__ import map_with_list_comprehension')
     profile('map_with_map_func()', 'from __main__ import map_with_map_func')
 
-    print "***** MAP + FILTER PROFILING *****"
+    print "\n***** MAP + FILTER PROFILING *****"
     assert mapfilter_with_normal_for() == mapfilter_with_list_comprehension() == mapfilter_with_mapfilter_func()
     head = 'fn min mean max'.split(' ')
     print '{0:>30s} {1:<10s} {2:<10s} {3:<10s}'.format(*head)
