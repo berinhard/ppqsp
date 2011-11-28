@@ -37,6 +37,21 @@ def map_with_list_comprehension():
 def map_with_map_func():
     return map(pow_3, iter_list)
 
+##########################################
+######## MAP + FILTER
+def mapfilter_with_normal_for():
+    l = []
+    for x in iter_list:
+        if divisble_by_2(x):
+            l.append(pow_3(x))
+    return l
+
+def mapfilter_with_list_comprehension():
+    return [pow_3(x) for x in iter_list if divisble_by_2(x)]
+
+def mapfilter_with_mapfilter_func():
+    return map(pow_3, filter(divisble_by_2, iter_list))
+
 def create_table_result(title, results):
     calc = {
         'fn': title,
@@ -70,3 +85,11 @@ if __name__ == '__main__':
     profile('map_with_normal_for()', 'from __main__ import map_with_normal_for')
     profile('map_with_list_comprehension()', 'from __main__ import map_with_list_comprehension')
     profile('map_with_map_func()', 'from __main__ import map_with_map_func')
+
+    print "***** MAP + FILTER PROFILING *****"
+    assert mapfilter_with_normal_for() == mapfilter_with_list_comprehension() == mapfilter_with_mapfilter_func()
+    head = 'fn min mean max'.split(' ')
+    print '{0:>30s} {1:<10s} {2:<10s} {3:<10s}'.format(*head)
+    profile('mapfilter_with_normal_for()', 'from __main__ import mapfilter_with_normal_for')
+    profile('mapfilter_with_list_comprehension()', 'from __main__ import mapfilter_with_list_comprehension')
+    profile('mapfilter_with_mapfilter_func()', 'from __main__ import mapfilter_with_mapfilter_func')
