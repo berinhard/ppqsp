@@ -23,6 +23,7 @@ def filter_with_list_comprehension():
 def filter_with_filter_func():
     return filter(divisble_by_2, iter_list)
 
+
 ##########################################
 ######## MAP
 def map_with_normal_for():
@@ -36,6 +37,7 @@ def map_with_list_comprehension():
 
 def map_with_map_func():
     return map(pow_3, iter_list)
+
 
 ##########################################
 ######## MAP + FILTER
@@ -51,6 +53,7 @@ def mapfilter_with_list_comprehension():
 
 def mapfilter_with_mapfilter_func():
     return map(pow_3, filter(divisble_by_2, iter_list))
+
 
 def create_table_result(title, results):
     calc = {
